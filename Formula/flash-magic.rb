@@ -30,12 +30,14 @@ class FlashMagic < Formula
     libexec.install Dir["*"], Dir[".[!.]*"]
 
     # 2. Install runtime dependencies inside libexec. `--production`
-    #    skips devDeps; `--ignore-scripts` skips `prepublishOnly` (we
-    #    already have the prebuilt dist/) and any other lifecycle hook
-    #    that would try to rebuild from source.
+    #    skips devDeps. We DO let dep postinstalls run — without them,
+    #    native bindings (e.g. bigint) fall back to pure JS and surface
+    #    a noisy warning on every CLI launch. Our own package has no
+    #    install hooks, only `prepublishOnly`, which `npm install` never
+    #    triggers — so this is safe.
     cd libexec do
       system "npm", "install", "--production", "--no-audit", "--no-fund",
-                    "--ignore-scripts", "--no-package-lock"
+                    "--no-package-lock"
     end
 
     # 3. Hand-rolled bin shims — point both binary names at dist/index.js
