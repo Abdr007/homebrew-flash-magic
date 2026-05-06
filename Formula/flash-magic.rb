@@ -15,8 +15,8 @@
 class FlashMagic < Formula
   desc "Sub-second perpetuals trading on Solana via MagicBlock ER"
   homepage "https://github.com/Abdr007/flash-magic-terminal"
-  url "https://registry.npmjs.org/flash-magic-terminal/-/flash-magic-terminal-0.2.0.tgz"
-  sha256 "5432c4105538d73d0ea7bfd27aa2c1b553672ecb06a8e5d00cda0db81081fe81"
+  url "https://registry.npmjs.org/flash-magic-terminal/-/flash-magic-terminal-0.3.0.tgz"
+  sha256 "bead30dad15980cf301fbcc68869c6002455e4a8b4f36913567403cab1174f56"
   license "MIT"
 
   # Match the package's engines.node — anything older fails at import
